@@ -5,7 +5,7 @@ from products.models import Product, ProductCategory, Basket
 
 # admin.site.register(Product)
 admin.site.register(ProductCategory)
-admin.site.register(Basket)
+# admin.site.register(Basket)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -14,3 +14,9 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('description',)
     search_fields = ('name',)
     ordering = ('name', )
+
+
+class BasketAdmin(admin.TabularInline):
+    model = Basket
+    fields = ('product', 'quantity')
+    extra = 0
